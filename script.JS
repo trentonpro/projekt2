@@ -58,7 +58,7 @@ const questions = [
         ]
     },
     {
-        question: "(Better Call Saul) Mis oli Jimmy juriidilise juhtumi nimi?",
+        question: "Mis oli Jimmy juriidilise juhtumi nimi?",
         image: "sandpiper.jpg",
         answers: [
             {text: "Sandpiper", correct: true},
@@ -81,10 +81,10 @@ const questions = [
         question: "Kus kais Jimmy tootamas 1 aasta?",
         image: "1aasta.jpg",
         answers: [
-            {text: "Prostituutina", correct: false},
+            {text: "Prostituudina", correct: false},
             {text: "Koolis opetajana", correct: false},
             {text: "Telefoni muujana", correct: true},
-            {text: "Advokaatina", correct: false},
+            {text: "Advokaadina", correct: false},
         ]
     },
     {
