@@ -47,8 +47,6 @@ const questions = [
             {text: "Mandala", correct: false},
         ]
     },
-
-
     {
         question: "Kuidas kutsuti Tuco abuelitat kahe rulasoitja poolt?",
         image: "skater.jpg",
@@ -59,8 +57,6 @@ const questions = [
             {text: "Biznatch", correct: true},
         ]
     },
-
-
     {
         question: "(Better Call Saul) Mis oli Jimmy juriidilise juhtumi nimi?",
         image: "sandpiper.jpg",
@@ -71,7 +67,6 @@ const questions = [
             {text: "A1A", correct: false},
         ]
     },
-
     {
         question: "Mis juhtus Better Call Sauli kolmanda hooaja lopus?",
         image: "s3finale.jpg",
@@ -82,7 +77,7 @@ const questions = [
             {text: "Kim pani enda maja kogemata polema", correct: false},
         ]
     },
-        {
+    {
         question: "Kus kais Jimmy tootamas 1 aasta?",
         image: "1aasta.jpg",
         answers: [
@@ -92,7 +87,7 @@ const questions = [
             {text: "Advokaatina", correct: false},
         ]
     },
-        {
+    {
         question: "Kelleks vahetas Jimmy McGill oma nime?",
         image: "saulgoodman.jpeg",
         answers: [
@@ -102,7 +97,7 @@ const questions = [
             {text: "Saul Takovic", correct: false},
         ]
     },
-        {
+    {
         question: "Mis on Better Call Saul viimase episoodi nimi?",
         image: "saulgone.jpg",
         answers: [
@@ -146,15 +141,16 @@ function showQuestion() {
 
     questionElement.appendChild(imgContainer);
 
+    
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
         button.classList.add("btn");
-        button.addEventListener("click", () => checkAnswer(answer));
         answerButtons.appendChild(button);
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
+        if(answer.correct){
+            button.dataset.correct = answer.correct
         }
+        button.addEventListener("click", selectAnswer);
     });
 }
 
@@ -189,6 +185,28 @@ function resetState() {
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);  
     }
+}
+
+function selectAnswer(e) {
+    const selectedBtn = e.target;
+    const isCorrect = selectedBtn.dataset.correct === "true";
+
+    
+    const allButtons = answerButtons.querySelectorAll("button");
+    allButtons.forEach(button => button.disabled = true);
+
+    if (isCorrect) {
+        selectedBtn.classList.add("correct");
+    } else {
+        selectedBtn.classList.add("incorrect");
+        
+        const correctButton = Array.from(allButtons).find(button => button.dataset.correct === "true");
+        correctButton.classList.add("correct");
+    }
+
+    
+    checkAnswer({correct: isCorrect});
+    nextButton.style.display = 'block';  
 }
 
 startQuiz();

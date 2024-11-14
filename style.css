@@ -84,9 +84,9 @@ body {
 }
 
 .correct {
-    background-color: greenyellow;
+    background-color: #9aeabc;
 }
 
 .incorrect {
-    background-color: red;
+    background-color: #ff9393
 }
