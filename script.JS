@@ -173,8 +173,6 @@ function nextQuestion() {
 
 function showResults() {
     questionElement.innerHTML = `Teie skoor: ${score} / ${questions.length}`;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "none";
     answerButtons.innerHTML = '';  
 }
 
